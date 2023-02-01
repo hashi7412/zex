@@ -1,0 +1,40 @@
+@media only screen and (max-width: 1023px) {
+    .m-view-dnone {
+        display: none !important;
+    }
+
+    .m-view-dblock {
+        display: block !important;
+    }
+
+    .trade-page-left,
+    .trade-page-right {
+        flex: 100% !important;
+    }
+
+    .mw-50 {
+        width: 50%;
+    }
+
+    .mw-33 {
+        width: 28%;
+    }
+
+    .mtext-right {
+        text-align: end;
+    }
+
+    .mtext-center {
+        text-align: center;
+    }
+
+    .mmb-4 {
+        margin-bottom: 20px;
+    }
+    .mp-0{
+        padding: 0;
+    }
+    .mflex-wrap {
+        flex-wrap: wrap;
+    }
+}

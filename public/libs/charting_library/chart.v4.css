@@ -1,0 +1,45 @@
+.theme-dark:root {
+    --tv-color-platform-background: #040818;
+    --tv-color-pane-background: #040818;
+    --tv-color-pane-background-secondary: #040818;
+    --tv-color-toolbar-button-background-hover: #2d3552;
+    --tv-color-toolbar-button-background-secondary-hover: #2d3552;
+    --tv-color-toolbar-button-background-expanded: #040818;
+    --tv-color-toolbar-button-text: #6678a9;
+    --tv-color-toolbar-button-text-hover: #b0b9dc;
+    --tv-color-toolbar-button-text-active: #b0b9dc;
+    --tv-color-toolbar-button-text-active-hover: #b0b9dc;
+    --tv-color-item-active-text: #6678a9;
+    --tv-color-toolbar-toggle-button-background-active: #27a2f8;
+    --tv-color-toolbar-toggle-button-background-active-hover: #27a2f8
+}
+
+html.theme-dark body {
+    color: #6678a9;
+    font-weight: 500
+}
+
+html.theme-dark .tv-dialog {
+    background-color: #12182c
+}
+
+.chart-widget--themed-dark .gear-3B_8TAjc svg {
+    fill: #6678a9 !important
+}
+
+html.theme-dark .layout__area--left {
+    width: 55px !important
+}
+
+html.theme-dark .layout__area--center,
+html.theme-dark .scrollWrap-nAnkzkWd {
+    background: #0f1529 !important;
+    border-left: .5px solid #0f1529 !important
+}
+
+html.theme-dark .chart-toolbar {
+    border-color: #0f1529 !important
+}
+html.theme-dark .chart-page .chart-container-border {
+    background-color: #131722;
+}

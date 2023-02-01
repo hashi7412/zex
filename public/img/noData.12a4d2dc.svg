@@ -1,0 +1,43 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="16" width="52" height="56" rx="12" transform="rotate(-15 1 16)" fill="url(#paint0_linear)" />
+  <rect x="21" y="21" width="52" height="56" rx="12" fill="#12182C" />
+  <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="21" y="21" width="52" height="56">
+    <path
+      d="M21 33C21 26.3726 26.3726 21 33 21H61C67.6274 21 73 26.3726 73 33V65C73 71.6274 67.6274 77 61 77H33C26.3726 77 21 71.6274 21 65V33Z"
+      fill="#12182C" />
+  </mask>
+  <g mask="url(#mask0)">
+    <g opacity="0.75" filter="url(#filter0_f)">
+      <path
+        d="M4.10583 27.5911C2.39053 21.1895 6.18952 14.6095 12.5911 12.8942L39.637 5.64724C46.0386 3.93194 52.6187 7.73093 54.334 14.1325L62.6162 45.0421C64.3315 51.4437 60.5325 58.0238 54.1309 59.7391L27.085 66.986C20.6834 68.7013 14.1033 64.9023 12.388 58.5007L4.10583 27.5911Z"
+        fill="url(#paint1_linear)" />
+    </g>
+  </g>
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M61 22H33C26.9249 22 22 26.9249 22 33V65C22 71.0751 26.9249 76 33 76H61C67.0751 76 72 71.0751 72 65V33C72 26.9249 67.0751 22 61 22ZM33 21C26.3726 21 21 26.3726 21 33V65C21 71.6274 26.3726 77 33 77H61C67.6274 77 73 71.6274 73 65V33C73 26.3726 67.6274 21 61 21H33Z"
+    fill="url(#paint2_linear)" />
+  <circle opacity="0.3" cx="35" cy="49" r="3" fill="white" />
+  <circle opacity="0.45" cx="47" cy="49" r="3" fill="white" />
+  <circle opacity="0.6" cx="59" cy="49" r="3" fill="white" />
+  <defs>
+    <filter id="filter0_f" x="-11" y="-9.4585" width="88.722" height="91.5504" filterUnits="userSpaceOnUse"
+      color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+      <feGaussianBlur stdDeviation="6" result="effect1_foregroundBlur" />
+    </filter>
+    <linearGradient id="paint0_linear" x1="1" y1="72" x2="53" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00D8E2" />
+      <stop offset="1" stop-color="#27A2F8" />
+    </linearGradient>
+    <linearGradient id="paint1_linear" x1="15.4939" y1="70.0918" x2="65.722" y2="56.6333"
+      gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00D8E2" />
+      <stop offset="1" stop-color="#27A2F8" />
+    </linearGradient>
+    <linearGradient id="paint2_linear" x1="47" y1="21" x2="47" y2="77" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#242D43" stop-opacity="0" />
+      <stop offset="1" stop-color="#242D43" />
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,37 @@
+.trade-page {
+    &-right {
+        background-color: #0f1529;
+        min-height: 100vh;
+        box-shadow: -1px 0px rgb(55 63 92 / 50%);
+    }
+
+    &-header {
+        box-shadow: 0px 1px rgb(55 63 92 / 50%);
+    }
+
+    .trade-page-right-bar {
+        &-header {
+            box-shadow: 0px 1px rgb(55 63 92 / 50%);
+        }
+
+        .to-arrow {
+            svg {
+                width: 28px;
+                height: 28px;
+                text-align: center;
+                background-color: #192137;
+                border-radius: 6px;
+                padding: 3px;
+                margin: -20px auto -8px;
+                z-index: 3;
+                position: relative;
+            }
+        }
+    }
+
+}
+div[id^=tradingview_]{
+    // width: 100% !important;
+    height: 50vh !important;
+    // overflow: auto;
+}

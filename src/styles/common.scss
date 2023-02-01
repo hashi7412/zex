@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+body {
+    background-color: #040818;
+    font-family: 'IBM Plex Sans', sans-serif;
+    // overflow: ovelay;
+    padding-bottom: 32px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #040818;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #232b48;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #232b48;
+}
+
+.tp {
+    color: #6678a9;
+}
+
+// .ghost-btn-green {
+//     background: rgba(0, 216, 226, .15);
+//     color: #00d8e2;
+//     border-color: rgba(0, 216, 226, .2);
+// }
+
+.zex-btn-sec {
+    background: #373f5c;
+    color: #fff;
+    opacity: 0.8;
+    border: none;
+    font-size: 14px !important;
+    font-weight: 600;
+
+    &:hover {
+        opacity: 1;
+        color: #fff !important;
+    }
+}
+
+.logo {
+    height: 22px;
+    max-width: max-content;
+}
+
+.border-color {
+    border-color: #363c4e;
+}
+
+
+.market-icon-content {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    background-color: #373f5c;
+    padding: 2px;
+    border-radius: 0px 5px 0px 5px;
+}
+
+.market-icon-postion-img {
+    height: 20px;
+}
+
+.mobile-menu-header {
+    margin-top: -42px;
+    position: absolute;
+    left: 15px;
+}
+
+.connect-wallet-list{
+    background-color: #373f5c;
+    border-radius: 15px;
+    img{
+        height: 30px;
+    }
+}

@@ -49,7 +49,13 @@ function TradePageRightBar({setIsModalOpen}) {
         abi: zexStorageABI,
         functionName: 'owner',
     })
-    console.log(maintainer, '----d-----')
+    const buy = () => {
+
+    }
+
+    const sell = () => {
+
+    }
     return (
         <div className='trade-page-right-bar'>
             <div className='trade-page-right-bar-header p-3'>
@@ -59,8 +65,8 @@ function TradePageRightBar({setIsModalOpen}) {
                     <Button className='zex-btn-sec' size='large'disabled={!write} onClick={() => write?.()} >Isolated</Button> {/**/}
 
                     <Radio.Group className='cus-radio-group' size="large" onChange={onChange} value={value} defaultValue="1">
-                        <Radio.Button value={1}>Buy / Long</Radio.Button>
-                        <Radio.Button className='orange' value={2}>Sell / Short</Radio.Button>
+                        <Radio.Button value={1} onClick={buy}>Buy / Long</Radio.Button>
+                        <Radio.Button className='orange' value={2} onClick={sell}>Sell / Short</Radio.Button>
                     </Radio.Group>
                     <Divider type="vertical" />
                     <Button size='large' className='tp border-0 zex-btn-sec'>
@@ -93,7 +99,7 @@ function TradePageRightBar({setIsModalOpen}) {
                                 Market Price
                             </div>
                             <div className='text-lg text-white font-bold'>
-                                $ 1.01
+                                $ 1.0745
                             </div>
                         </Card>
                     </Col>

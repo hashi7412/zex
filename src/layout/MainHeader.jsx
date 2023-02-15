@@ -88,8 +88,8 @@ function MainHeader({setIsModalOpen}) {
                     </div>
                 </div>
                 <div className='flex self-center w-2/5 justify-end'>
-                    {process.env.REACT_APP_MAINNET && <div><NetsTypeDropdown /></div>}
-                    {!process.env.REACT_APP_MAINNET && <div className='flex text-white items-center text-sm px-4'>
+                    {process.env.ZEX_APP_MAINNET && <div><NetsTypeDropdown /></div>}
+                    {!process.env.ZEX_APP_MAINNET && <div className='flex text-white items-center text-sm px-4'>
                         <Image src={`/img/polygon.0c049c96.svg`} alt='ploygon logo' />
                         <div className='ml-2 text-zexText font-medium'>Polygon Mumbai Testnet</div>
                     </div>}

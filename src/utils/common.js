@@ -3,7 +3,7 @@ import { hexlify, concat, arrayify, zeroPad } from "ethers/lib/utils.js";
 import { BigNumber } from "ethers";
 
 export const getProviders = () => {
-    const network = process.env.REACT_APP_MAINNET ? 'mainnet' : 'testnet'
+    const network = process.env.ZEX_APP_MAINNET ? 'mainnet' : 'testnet'
     return NETWORKS[network].rpc;
 }
 

@@ -1,18 +1,55 @@
 import { Button, Card, Col, Divider, Input, InputNumber, Radio, Row, Select, Slider, Tooltip } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { useAccount, useContractRead, useContractWrite, usePrepareContractWrite, usePrepareSendTransaction, useSendTransaction } from 'wagmi';
-import { getProviders } from '../../../utils/common';
+import { useAccount, useContractRead, useContractWrite, usePrepareContractWrite } from 'wagmi';
+// import { usePrepareSendTransaction, useSendTransaction } from 'wagmi';
+// import { getProviders } from '../../../utils/common';
 import zexStorageABI from '../../../config/abis/zexStorage.json';
 import { ethers } from 'ethers';
 
-function TradePageRightBar({setIsModalOpen}) {
+function TradePageRightBar({setIsModalOpen, currentData}) {
     const { isConnected } = useAccount();
+    
+    const fee = 0.08;
+    const price = currentData.close;
+
+    const [ limitPrice, setLPrice ] = useState(price);
+    const [ stopPrice, setSPrice ] = useState(price);
+    const [ usedAmount, setUsedAmount ] = useState();
+    const [ resultAmount, setResultAmount ] = useState();
+    
+
+    const changeUsedAmount = (value) => {
+        setUsedAmount(value);
+        let amount = ((value * (1 - fee)) / price) * inputValue;
+        if (amount === 0) {
+            setResultAmount();
+        } else {
+            amount = amount.toFixed(4);
+            setResultAmount(amount);
+        }
+    }
+
+    const changeResultAmount = (value) => {
+        setResultAmount(value);
+        let amount = (value * price) / (1 - fee);
+        if (amount === 0) {
+            setUsedAmount();
+        } else {
+            amount = amount.toFixed(4);
+            setUsedAmount(amount);
+        }
+    }
+
+    const [ status, setStatus ] = useState('market');
+
     const handleChange = (value) => {
-        console.log(`selected ${value}`);
+        setStatus(value);
+        setLPrice(price);
+        setSPrice(price);
     };
+
     const [value, setValue] = useState(1);
     const onChange = (e) => {
-        console.log('radio checked', e.target.value);
         setValue(e.target.value);
     };
 
@@ -28,10 +65,15 @@ function TradePageRightBar({setIsModalOpen}) {
     const [inputValue, setInputValue] = useState(1);
     const onChange1 = (newValue) => {
         setInputValue(newValue);
+        let amount = ((value * (1 - fee)) / price) * newValue;
+        if (amount === 0) {
+            setResultAmount();
+        } else {
+            amount = amount.toFixed(4);
+            setResultAmount(amount);
+        }
     };
-    useEffect(()=>{
-        // console.log(contract, '------c----')
-    }, [])
+
     const { config } = usePrepareContractWrite({
         address: '0xA187457BAc9a236989c9052ffC7619Cb5A6eE1Ea',
         abi: zexStorageABI,
@@ -43,12 +85,13 @@ function TradePageRightBar({setIsModalOpen}) {
         }
     })
     const { data, isLoading, isSuccess, write, error } = useContractWrite(config)
-    console.log(write, '-----w----', error, data, isLoading, isSuccess)
+
     const { data: maintainer, isError, isLoading: maintainerLoading } = useContractRead({
         address: '0xA187457BAc9a236989c9052ffC7619Cb5A6eE1Ea',
         abi: zexStorageABI,
         functionName: 'owner',
     })
+
     const buy = () => {
 
     }
@@ -60,8 +103,6 @@ function TradePageRightBar({setIsModalOpen}) {
         <div className='trade-page-right-bar'>
             <div className='trade-page-right-bar-header p-3'>
                 <div className='flex items-center justify-between'>
-
-
                     <Button className='zex-btn-sec' size='large'disabled={!write} onClick={() => write?.()} >Isolated</Button> {/**/}
 
                     <Radio.Group className='cus-radio-group' size="large" onChange={onChange} value={value} defaultValue="1">
@@ -93,14 +134,28 @@ function TradePageRightBar({setIsModalOpen}) {
                                 <div className='market-icon-content'>
                                     <img className='market-icon-postion-img' src='/img/zexicon.png' alt="mux"/>
                                 </div>
-
                             </Tooltip>
                             <div className='text-xs'>
                                 Market Price
                             </div>
-                            <div className='text-lg text-white font-bold'>
-                                $ 1.0745
-                            </div>
+                            {
+                                status === 'market' 
+                                    ? <div className='text-lg font-bold'>$ { price }</div>
+                                    : (
+                                        status === 'limit'
+                                            ?   
+                                                <div className='flex justify-center items-center gap-x-2 font-bold'>
+                                                    <p className='text-white text-lg'>$</p>
+                                                    <Input className='cus-input' value={limitPrice} placeholder="0.0" onChange = {(e) => setLPrice(e.target.value)} />
+                                                </div>
+                                            : 
+                                                <div className='flex justify-center items-center gap-x-2 font-bold'>
+                                                    <p className='text-white text-lg'>≥$</p>
+                                                    <Input className='cus-input' value={stopPrice} placeholder="0.0" onChange = {(e) => setSPrice(e.target.value)} />
+                                                </div>
+                                    )
+                            }
+                            
                         </Card>
                     </Col>
                     <Col xs={12}>
@@ -138,11 +193,17 @@ function TradePageRightBar({setIsModalOpen}) {
                         <Card className='zex-cus-card'>
                             <Row gutter={10} align="bottom">
                                 <Col xs={12}>
-                                    <div className='text-xs '>
-                                        Use
-                                    </div>
+                                    {
+                                        usedAmount > 0 
+                                            ?   <div className='text-xs '>
+                                                    Use: $ { usedAmount }
+                                                </div>
+                                            :   <div className='text-xs'>
+                                                    Use: $0
+                                                </div>
+                                    }
                                     <div>
-                                        <Input className='cus-input' placeholder="0.00" />
+                                        <Input className='cus-input' placeholder="0.0" value={ usedAmount } onChange={(e) => changeUsedAmount(e.target.value)} />
                                     </div>
                                 </Col>
                                 <Col xs={12} >
@@ -155,7 +216,6 @@ function TradePageRightBar({setIsModalOpen}) {
                                     </div>
                                 </Col>
                             </Row>
-
                         </Card>
                     </Col>
                     <Col xs={24}>
@@ -171,10 +231,22 @@ function TradePageRightBar({setIsModalOpen}) {
                             <Row gutter={10} align="bottom">
                                 <Col xs={12}>
                                     <div className='text-xs '>
-                                        Long
+                                        {
+                                            value === 1 
+                                                ?   (
+                                                        (usedAmount * (1 - fee) * inputValue) > 0
+                                                            ? <p>Long: $ { (usedAmount * (1 - fee) * inputValue).toFixed(4) }</p>
+                                                            : <p>Long: $0</p>
+                                                )
+                                                :   (
+                                                        (usedAmount * (1 - fee) * inputValue) > 0
+                                                            ? <p>Short: $ { (usedAmount * (1 - fee) * inputValue).toFixed(4) }</p>
+                                                            : <p>Short: $0</p>
+                                                )
+                                        }
                                     </div>
                                     <div>
-                                        <Input className='cus-input' placeholder="0.00" />
+                                        <Input className='cus-input' placeholder="0.0" value={ resultAmount } onChange={(e) => changeResultAmount(e.target.value)} />
                                     </div>
                                 </Col>
                                 <Col xs={12} >
@@ -190,7 +262,7 @@ function TradePageRightBar({setIsModalOpen}) {
                         </Card>
                         <Card className='leverage-card'>
                             <div className='flex justify-between tp text-xs mb-4'>
-                                <div>Leverage: 10.0x</div>
+                                <div>Leverage: {inputValue}x</div>
                                 <div>
                                     Shortcut
                                 </div>
@@ -201,6 +273,7 @@ function TradePageRightBar({setIsModalOpen}) {
                                         className='slider-input'
                                         min={1}
                                         max={100}
+                                        placeholder="1"
                                         value={inputValue}
                                         onChange={onChange1}
                                     />

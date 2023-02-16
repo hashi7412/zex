@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
+composer.lock
+=======
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -24,3 +42,4 @@ yarn-debug.log*
 yarn-error.log*
 
 package-lock.json
+>>>>>>> a1f256f9991ad5cb98670d606394085d33bc8a84

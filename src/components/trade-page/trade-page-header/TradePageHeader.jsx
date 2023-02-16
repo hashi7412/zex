@@ -29,6 +29,8 @@ function TradePageHeader(props) {
                 </div>
                 <Divider type="vertical" className='m-view-dnone' />
                 <div className='mw-50 mtext-right mmb-4'>
+                    <span className='font-bold text-xl text-white mr-3'>{ props.currentData.close }</span>
+                    <span className='text-base text-red-600'>(- 0.33%)</span>
                     <span className='font-bold text-xl text-white mr-3'>{data}</span>
                     <span className={percent > 0 ? 'text-base text-green-600' : 'text-base text-red-600'}>({percent} %)</span>
                 </div>

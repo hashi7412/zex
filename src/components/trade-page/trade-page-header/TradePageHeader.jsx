@@ -101,7 +101,6 @@ export function useCoinMarket() {
         try {
             const res = await fetch(`${BASE_URL}/api`);
             const data = await res.json();
-            console.log(data, 'data')
             updateState(data);
         } catch (err) {
             console.log(err);
